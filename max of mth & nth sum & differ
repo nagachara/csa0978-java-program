@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class ArrayOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        int[] numbers = new int[size];
+        System.out.println("Enter the elements of the array: ");
+        for (int i = 0; i < size; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        System.out.print("Enter the index m: ");
+        int m = scanner.nextInt();
+        System.out.print("Enter the index n: ");
+        int n = scanner.nextInt();
+        if (m < 0 || m >= size || n < 0 || n >= size) {
+            System.out.println("Invalid indices. Please make sure m and n are within the array bounds.");
+        } else {
+            int maxAtM = numbers[m];
+            int minAtN = numbers[n];
+            int sum = maxAtM + minAtN;
+            int difference = maxAtM - minAtN;
+
+            System.out.println("Max at m-th position: " + maxAtM);
+            System.out.println("Min at n-th position: " + minAtN);
+            System.out.println("Sum: " + sum);
+            System.out.println("Difference: " + difference);
+        }
+        
+        scanner.close();
+    }
+}
