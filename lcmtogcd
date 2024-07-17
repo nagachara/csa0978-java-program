@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class LCMandGCD {
+    
+    // Function to find the GCD of two numbers
+    public static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+
+    // Function to find the LCM of two numbers
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+
+    // Function to find the GCD of an array of numbers
+    public static int findGCD(int[] numbers) {
+        int result = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            result = gcd(result, numbers[i]);
+        }
+        return result;
+    }
+
+    // Function to find the LCM of an array of numbers
+    public static int findLCM(int[] numbers) {
+        int result = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            result = lcm(result, numbers[i]);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("N value = ");
+        int n = scanner.nextInt();
+
+        int[] numbers = new int[n];
+        for (int i = 0; i < n; i++) {
+            System.out.print("Number " + (i + 1) + " = ");
+            numbers[i] = scanner.nextInt();
+        }
+
+        int gcd = findGCD(numbers);
+        int lcm = findLCM(numbers);
+
+        System.out.println("GCD = " + gcd);
+        System.out.println("LCM = " + lcm);
+
+        scanner.close();
+    }
+}
