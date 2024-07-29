@@ -1,0 +1,25 @@
+public class DivisorCount {
+    public static String isDivisorCountEvenOrOdd(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                count++;
+            }
+        }
+        return (count % 2 == 0) ? "even" : "odd";
+    }
+
+    public static void main(String[] args) {
+
+        int num1 = 10;
+        System.out.println("The count of divisors of " + num1 + " is " + isDivisorCountEvenOrOdd(num1));
+
+
+        int num2 = 55;
+        System.out.println("The count of divisors of " + num2 + " is " + isDivisorCountEvenOrOdd(num2));
+
+
+        int num3 = 80;
+        System.out.println("The count of divisors of " + num3 + " is " + isDivisorCountEvenOrOdd(num3));
+    }
+}
