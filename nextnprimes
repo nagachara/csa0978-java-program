@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class NextNPrimes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter the value of n (for nth prime): ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the number of primes to print after nth prime: ");
+        int count = scanner.nextInt();
+
+
+        int nthPrime = findNthPrime(n);
+
+
+        System.out.println("The next " + count + " prime numbers after the " + n + "th prime number (" + nthPrime + ") are:");
+        printNextNPrimes(nthPrime, count);
+
+        scanner.close();
+    }
+
+
+    public static int findNthPrime(int n) {
+        int num = 2; 
+        int count = 0;
+
+        while (count < n) {
+            if (isPrime(num)) {
+                count++;
+            }
+            num++;
+        }
+
+        return num - 1;
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static void printNextNPrimes(int startPrime, int count) {
+        int num = startPrime + 1;
+        int printedCount = 0;
+
+        while (printedCount < count) {
+            if (isPrime(num)) {
+                System.out.println(num);
+                printedCount++;
+            }
+            num++;
+        }
+    }
+}
