@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class NthOddNumber {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the value of N: ");
+        int n = input.nextInt();
+
+        int nthOddAfterNOdds = (2 * n - 1) + (2 * n);
+
+        System.out.println(n + "th odd number after " + n + " odd numbers = " + nthOddAfterNOdds);
+    }
+}
