@@ -1,0 +1,29 @@
+public class Main {
+
+    public static void main(String[] args) {
+
+        String[] inputs = {
+            "Maximal Substring Consisting",
+            "lea@st one wor2d",
+            "1254  98076",
+            "& * (  ) % # $",
+            "letters and spaces"
+        };
+
+        for (String input : inputs) {
+            int length = lengthOfLastWord(input);
+            System.out.println("Input: \"" + input + "\"");
+            System.out.println("Length of the last word: " + length);
+            System.out.println();
+        }
+    }
+    
+    public static int lengthOfLastWord(String s) {
+
+        s = s.trim();
+
+        int lastSpaceIndex = s.lastIndexOf(' ');
+
+        return s.length() - lastSpaceIndex - 1;
+    }
+}
