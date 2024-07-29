@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class FibonacciWithThread {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter the number of terms in the Fibonacci series: ");
+        int numberOfTerms = scanner.nextInt();
+
+
+        FibonacciThread fibonacciThread = new FibonacciThread(numberOfTerms);
+        Thread thread = new Thread(fibonacciThread);
+        
+
+        thread.start();
+        
+        try {
+
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class FibonacciThread implements Runnable {
+    private int numberOfTerms;
+
+    public FibonacciThread(int numberOfTerms) {
+        this.numberOfTerms = numberOfTerms;
+    }
+
+    @Override
+    public void run() {
+        generateFibonacci(numberOfTerms);
+    }
+
+
+    private void generateFibonacci(int n) {
+        int a = 0, b = 1;
+        System.out.print("Fibonacci series: " + a);
+
+        for (int i = 1; i < n; i++) {
+            System.out.print(", " + b);
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+        System.out.println();
+    }
+}
