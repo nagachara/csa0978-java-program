@@ -1,0 +1,46 @@
+class SuperClass {
+    int number;
+
+    public SuperClass(int number) {
+        this.number = number;
+        System.out.println("SuperClass number: " + number);
+    }
+
+
+    public void display() {
+        System.out.println("Display method in SuperClass. Number: " + number);
+    }
+}
+
+class SubClass extends SuperClass {
+    int number;
+
+    public SubClass(int superNumber, int subNumber) {
+        super(superNumber);
+        this.number = subNumber;
+        System.out.println("SubClass number: " + subNumber);
+    }
+
+
+    @Override
+    public void display() {
+        System.out.println("Display method in SubClass. Number: " + number);
+    }
+
+
+    public void displaySuperClassNumber() {
+        System.out.println("SuperClass number accessed from SubClass: " + super.number);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SubClass obj = new SubClass(10, 20);
+        
+
+        obj.display();
+        
+
+        obj.displaySuperClassNumber();
+    }
+}
